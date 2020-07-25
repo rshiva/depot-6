@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :orders
   resources :line_items do
     post :increment, on: :member
     post :decrement,  on: :member

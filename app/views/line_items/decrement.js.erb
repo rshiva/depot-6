@@ -2,7 +2,6 @@ increment= document.getElementById("increment")
 <% if @current_item.quantity >= 1%>
   increment.innerHTML = "<%= j @current_item.quantity %>"
 <%else%>
-  increment.style.display="none"
   decrement= document.getElementById("decrement")
   decrement.style.display="none"
 <%end%>

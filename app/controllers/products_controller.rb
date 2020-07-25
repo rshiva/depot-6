@@ -1,5 +1,8 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action only: [:show]  do
+    @new_data = "shiva"
+  end
 
   # GET /products
   # GET /products.json
@@ -10,6 +13,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    puts "----------, #{@new_data}"
   end
 
   # GET /products/new
