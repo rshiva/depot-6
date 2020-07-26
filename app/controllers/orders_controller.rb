@@ -18,8 +18,8 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
-    cookies[:email_id] = "shiva@example.org"
-    @email_cookie = {value: cookies[:email_id], expires: 1.minute}
+    # cookies[:email_id] = "shiva@example.org"
+    # @email_cookie = {value: cookies[:email_id], expires: 1.minute}
   end
 
   # GET /orders/1/edit
@@ -75,9 +75,21 @@ class OrdersController < ApplicationController
       @order = Order.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def order_params
       params.require(:order).permit(:name, :address, :email, :pay_type)
+    end
+
+    # Only allow a list of trusted parameters through.
+    def pay_type_params
+      if order_params[:pay_type] == "Credit card"
+        params.require(:order).permit(:credit_card_number, :expiration_date)
+      elsif order_params[:pay_type] == "Check"
+        params.require(:order).permit(:routing_number, :account_number)
+      elsif order_params[:pay_type] == "Purchase order"
+        params.require(:order).permit(:po_number)
+      else
+        {}
+      end
     end
 
     def ensure_cart_isnt_empty

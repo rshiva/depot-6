@@ -23,13 +23,19 @@
 
   <div class="field">
     <%= form.label :email %>
-    <%= form.text_field :email, size: 40, value: @email_cookie[:value] %>
+    <%= form.text_field :email, size: 40 %>
   </div>
 
-  <div class="field">
+  <div id="pay-type-component"></div>
+
+  <%
+=begin%>
+ <div class="field">
     <%= form.label :pay_type %>
     <%= form.select :pay_type, Order.pay_types.keys, prompt: 'Select a payment method' %>
-  </div>
+  </div> 
+<%
+=end%>
 
   <div class="actions">
     <%= form.submit 'Place Order ' %>
