@@ -14,6 +14,8 @@ Rails.application.configure do
   config.eager_load = false
 
   #action cable
+  #single command to run
+  #bundle exec anycable --server-command "anycable-go --host=localhost --port=3334"
   config.action_cable.url = "ws://localhost:3334/cable"
 
   # Show full error reports.
