@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
+  skip_before_action :authorize, only: :show
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_comments, only: [:show]
   # before_action only: [:show]  do
   #   @new_data = "shiva"
   # end
@@ -76,8 +78,12 @@ class ProductsController < ApplicationController
       @product = Product.find(params[:id])
     end
 
+    def set_comments
+      @comments = @product.comments
+    end
+
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:title, :description, :image_url, :price)
+      params.require(:product).permit(:title, :description, :image_url, :price, :image)
     end
 end

@@ -11,8 +11,8 @@
 </p>
 
 <p>
-  <strong>Image url:</strong>
-  <%= @product.image_url %>
+  <strong>Image:</strong>
+  <%= image_tag @product.image, size: "147x176" if @product.image.attached?  %>
 </p>
 
 <p>
@@ -20,5 +20,13 @@
   <%= @product.price %>
 </p>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<div id = "product_comments">
+  <%= render @comments%>
+</div>
+<div id = "comment_form">
+  <strong>Add Comment </strong>
+  <%= render('comments/form')%>
+</div>
+
+<%= product_edit_by_admin(@product)%>
+<%= link_to 'Back', store_index_path %>

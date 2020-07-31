@@ -9,8 +9,9 @@
   <% @products.each do |product| %>
     <% cache product  do %>
       <li>
-        <%= image_tag  product.image_url %>
-        <h2><%= product.title%></h2>
+        
+        <%= link_to(image_tag(product.image, size: "147x176"), product) if product.image.attached? %>
+        <h2><%= link_to  "#{product.title}", product %></h2>
         <p>
           <%= sanitize product.description %>
         </p>

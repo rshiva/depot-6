@@ -1,0 +1,6 @@
+<%= form_with(model: [@product, @product.comments.build]) do |f|%>
+    <%= f.text_area :description, rows: 5, cols: 60 %>
+  <p>
+    <%= f.submit "Add Comment"%>
+  </p>
+<% end%>
