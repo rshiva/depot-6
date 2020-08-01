@@ -19,11 +19,11 @@ document.addEventListener('turbolinks:load',() => {
       const messagesContainer = document.getElementById("product_comments")
       messagesContainer.innerHTML = messagesContainer.innerHTML + data.html
 
-      // const storeElement = document.querySelector("main.store")
-      // if (storeElement) {
-      //   storeElement.innerHTML = data.html
+      const storeElement = document.querySelector("main.store")
+      if (storeElement) {
+        storeElement.innerHTML = data.html
         
-      // }
+      }
     }
   });
 })
