@@ -1,4 +1,4 @@
-class ProductsChannel < ApplicationCable::Channel
+class CommentsChannel < ApplicationCable::Channel
   def subscribed
     print("----",params)
     stream_from "products_#{params[:product_id]}"

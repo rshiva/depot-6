@@ -3,11 +3,14 @@ class CommentsController < ActionController::Base
 
   def create
     # byebug
-    @comments = @product.comments.create(comment_params)
-    redirect_to product_path(@product)
-    respond_to do |format|
-      format.js
-    end
+    @comment = @product.comments.create(comment_params)
+
+    html = render(partial: "comments/comment", locals: {comment: @comment}, layout: false)
+
+    ActionCable.server.broadcast "products_#{@product.id}", html: html
+
+    # format.html { redirect_to product_path(@product) }
+    # format.json { render :show, status: :ok, location: @product }
   end
 
   private
