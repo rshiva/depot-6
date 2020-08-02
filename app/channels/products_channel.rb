@@ -7,4 +7,9 @@ class ProductsChannel < ApplicationCable::Channel
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
   end
+
+  def appear
+    @product = Product.find(params[:product_id])
+    ActionCable.server.broadcast("products_#{params[:product_id]}", message: @product)
+  end
 end

@@ -20,7 +20,7 @@
   <%= @product.price %>
 </p>
 
-<div id = "product_comments" data-product-id= "<%= @product.id%>">
+<div id = "product_comments" data-product-id= "<%= @product.try(:id)%>">
   <%= render @comments%>
 </div>
 <div id = "comment_form">
